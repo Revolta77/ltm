@@ -19,6 +19,7 @@ use Revolta77\TranslationManager\Models\Translation;
 use Revolta77\TranslationManager\Models\UserLocales;
 use Revolta77\TranslationManager\Repositories\Interfaces\ITranslatorRepository;
 use ZipArchive;
+use Illuminate\Support\Str;
 
 /**
  * Class Manager

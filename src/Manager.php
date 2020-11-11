@@ -20,6 +20,7 @@ use Revolta77\TranslationManager\Models\UserLocales;
 use Revolta77\TranslationManager\Repositories\Interfaces\ITranslatorRepository;
 use ZipArchive;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 
 /**
  * Class Manager
@@ -1265,7 +1266,7 @@ class Manager
                 // just update the locale with translations, keys are already LTM keys here
                 $translations = $jsonTranslations[$locale];
             } else {
-                $translations = array_dot(include($langFile));
+                $translations = Arr::dot(include($langFile));
             }
             $this->importTranslationFile($locale, $db_group, $translations, $replace);
         }

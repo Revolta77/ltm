@@ -1,0 +1,10 @@
+/vendor
+composer.phar
+composer.lock
+.DS_Store
+images/Bullets.psd
+images/EditPopup.psd
+config.codekit
+node_modules/
+*.map
+/public/mix-manifest.json

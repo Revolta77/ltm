@@ -20,7 +20,7 @@ $ php artisan migrate
 
 #### Supported Laravel Versions
 
-> * For Laravel 7.0 require: `"revolta77/laravel-translation-manager": "~1.0"`
+> * For Laravel 7.0 require: `"revolta77/ltm": "~1.0"`
 
 > #### Initial Localizations Added
 >
@@ -69,9 +69,9 @@ specifically change that through the web UI, see [User Admin] or by populating t
 [PostgresTranslatorRepository.php]: https://github.com/Revolta77/ltm/blob/master/src/Repositories/PostgresTranslatorRepository.php
 [Removing dependency on UserPrivilegeMapper from facade alias array]: ../../wiki/Installation#removing-dependency-on-userprivilegemapper-from-facade-alias-array
 [Removing dependency on UserPrivilegeMapper from service providers array]: ../../wiki/Installation#removing-dependency-on-userprivilegemapper-from-service-providers-array
-[Screen Shot Show Source Refs]: https://raw.githubusercontent.com/wiki/revolta77/laravel-translation-manager/images/ScreenShot_ShowSourceRefs.png
+[Screen Shot Show Source Refs]: https://raw.githubusercontent.com/wiki/revolta77/ltm/images/ScreenShot_ShowSourceRefs.png
 [Setting up user authorization]: ../../wiki/Installation#setting-up-user-authorization
-[Translation Manager Screenshot]: https://raw.githubusercontent.com/wiki/revolta77/laravel-translation-manager/images/ScreenShot_main.png
+[Translation Manager Screenshot]: https://raw.githubusercontent.com/wiki/revolta77/ltm/images/ScreenShot_main.png
 [User Admin]: ../../wiki/Web-Interface#user-admin
 [Version Notes]: versioninfo.md
 [Web Interface: Source References]: ../../wiki/Web-Interface#source-references

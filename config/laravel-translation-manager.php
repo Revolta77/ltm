@@ -381,12 +381,12 @@ return array(
 
         // this will make LTM translation importable as wbn:revolta77.laravel-translation-manager.messages
 //        'vendor' => [
-//            'include' => ['revolta77/laravel-translation-manager'],
+//            'include' => ['revolta77/ltm'],
 //            'root' => '/vendor/{vendor}/{package}',
 //            'files' => 'resources/lang/{locale}/{group}',
 //        ],
 //
-//        'revolta77/laravel-translation-manager' => [
+//        'revolta77/ltm' => [
 //            '__merge' => ['workbench', 'vendor',],
 //            'db_group' => 'wbn:{vendor}.{package}::{group}',
 //        ],

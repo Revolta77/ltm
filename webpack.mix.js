@@ -19,9 +19,9 @@ mix.react('resources/assets/js/index.js', 'public/js')
 
 /*
 // add the following lines to your Laravel project's webpack.mix.js to have LTM React files copied and added to the mix-manifest.json
-mix.copy(['vendor/revolta77/laravel-translation-manager/public/js/index.js'], 'public/vendor/laravel-translation-manager/js/index.js')
-    .copy(['vendor/revolta77/laravel-translation-manager/public/css/index.css'], 'public/vendor/laravel-translation-manager/css/index.css')
-    .copy(['vendor/revolta77/laravel-translation-manager/public/images'], 'public/vendor/laravel-translation-manager/images')
+mix.copy(['vendor/revolta77/ltm/public/js/index.js'], 'public/vendor/laravel-translation-manager/js/index.js')
+    .copy(['vendor/revolta77/ltm/public/css/index.css'], 'public/vendor/laravel-translation-manager/css/index.css')
+    .copy(['vendor/revolta77/ltm/public/images'], 'public/vendor/laravel-translation-manager/images')
 ;
 */
 

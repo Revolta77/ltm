@@ -4,19 +4,19 @@ To have the pre-compiled files included in your mix based asset compilation add 
 lines to your Laravel project's `webpack.mix.js`, after compilation of your assets. 
 
 ```js
-mix.copy(['vendor/revolta77/laravel-translation-manager/public/js/index.js'], 'public/vendor/laravel-translation-manager/js/index.js')
-    .copy(['vendor/revolta77/laravel-translation-manager/public/css/index.css'], 'public/vendor/laravel-translation-manager/css/index.css')
-    .copy(['vendor/revolta77/laravel-translation-manager/public/images'], 'public/vendor/laravel-translation-manager/images')
+mix.copy(['vendor/revolta77/ltm/public/js/index.js'], 'public/vendor/laravel-translation-manager/js/index.js')
+    .copy(['vendor/revolta77/ltm/public/css/index.css'], 'public/vendor/laravel-translation-manager/css/index.css')
+    .copy(['vendor/revolta77/ltm/public/images'], 'public/vendor/laravel-translation-manager/images')
 ;
 ```
 
 If you want to build this app as part of your asset compilation then you will need to add the
 following to your `webpack.mix.js` (assuming this package is under
-`vendor/revolta77/laravel-translation-manager` directory):
+`vendor/revolta77/ltm` directory):
 
 ```js
-mix.react('vendor/revolta77/laravel-translation-manager/resources/assets/js/index.js', 'public/vendor/laravel-translation-manager/js')
-    .sass('vendor/revolta77/laravel-translation-manager/resources/assets/sass/index.scss', 'public/vendor/laravel-translation-manager/css')
+mix.react('vendor/revolta77/ltm/resources/assets/js/index.js', 'public/vendor/laravel-translation-manager/js')
+    .sass('vendor/revolta77/ltm/resources/assets/sass/index.scss', 'public/vendor/laravel-translation-manager/css')
     .setResourceRoot('/vendor/laravel-translation-manager/')
 ;
 ```

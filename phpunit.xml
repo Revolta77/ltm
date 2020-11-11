@@ -20,7 +20,7 @@
     <filter>
         <whitelist>
             <directory suffix=".php">app/</directory>
-            <!--<directory suffix=".php">./workbench/revolta77/laravel-translation-manager/src/</directory>-->
+            <!--<directory suffix=".php">./workbench/revolta77/ltm/src/</directory>-->
         </whitelist>
     </filter>
     <php>

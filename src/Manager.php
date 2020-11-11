@@ -1277,15 +1277,15 @@ class Manager
     {
         // functions is a replacement variable in $pattern
         /** @noinspection PhpUnusedLocalVariableInspection */
-        $functions = config('laravel-translation-manager.find.functions');
-        $pattern = implode('', config('laravel-translation-manager.find.pattern'));
+        $functions = config('ltm.find.functions');
+        $pattern = implode('', config('ltm.find.pattern'));
 
         // Find all PHP + Twig files in the app folder, except for storage
         $paths = $path ? [$path] : array_merge([$this->app->basePath() . '/app'], $this->app['config']['view']['paths']);
         $keys = array();
         foreach ($paths as $path) {
             $finder = new Finder();
-            $finder->in($path)->name("*.{" . implode(',', config('laravel-translation-manager.find.files')) . "}")->files();
+            $finder->in($path)->name("*.{" . implode(',', config('ltm.find.files')) . "}")->files();
 
             /** @var \Symfony\Component\Finder\SplFileInfo $file */
             foreach ($finder as $file) {

@@ -5,7 +5,7 @@ use Illuminate\Support\ServiceProvider;
 
 class ManagerServiceProvider extends ServiceProvider
 {
-    const PACKAGE = 'laravel-translation-manager';
+    const PACKAGE = 'ltm';
 
     // Laravel 5
     const CONTROLLER_PREFIX = '\\';

@@ -13,7 +13,7 @@ class AddUiSettingsToLtmUserLocales extends Migration
      */
     public function up()
     {
-        $prefix = \Config::get('laravel-translation-manager::config.table_prefix', '');
+        $prefix = \Config::get('ltm::config.table_prefix', '');
         Schema::table($prefix . 'ltm_user_locales', function (Blueprint $table) use ($prefix) {
             $table->dropIndex('ix_ltm_user_locales_user_id');
 
@@ -29,7 +29,7 @@ class AddUiSettingsToLtmUserLocales extends Migration
      */
     public function down()
     {
-        $prefix = \Config::get('laravel-translation-manager::config.table_prefix', '');
+        $prefix = \Config::get('ltm::config.table_prefix', '');
         Schema::table($prefix . 'ltm_user_locales', function (Blueprint $table) use ($prefix) {
             $table->dropColumn('ui_settings');
 

@@ -14,8 +14,8 @@ i18n
         debug: true,
 
         // have a common namespace used around the full app
-        ns: ['laravel-translation-manager'],
-        defaultNS: 'laravel-translation-manager',
+        ns: ['ltm'],
+        defaultNS: 'ltm',
 
         keySeparator: '.',
 

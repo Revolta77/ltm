@@ -32,6 +32,6 @@ class Translation extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->setConnection(config('laravel-translation-manager.default_connection'));
+        $this->setConnection(config('ltm.default_connection'));
     }
 }

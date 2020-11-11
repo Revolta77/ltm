@@ -17,6 +17,7 @@ use Revolta77\TranslationManager\Classes\TranslationLocales;
 use Revolta77\TranslationManager\Events\TranslationsPublished;
 use Revolta77\TranslationManager\Models\Translation;
 use Revolta77\TranslationManager\Models\UserLocales;
+use Illuminate\Support\Str;
 
 include_once(__DIR__ . '/Support/finediff.php');
 

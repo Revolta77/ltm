@@ -1761,29 +1761,29 @@ class Controller extends BaseController
         return $this->respondNotAdmin(false);
     }
 
-    public function postYandexKey( Request $request ) {
+    public function postYandexKey() {
         return Response::json(array(
             'status' => 'ok',
             'yandex_key' => $this->manager->config('yandex_translator_key', null),
         ));
     }
 
-  public function postgoogleKey( Request $request ) {
+  public function postgoogleKey() {
     return Response::json(array(
       'status' => 'ok',
       'google_key' => $this->manager->config('google_translator_key', null),
     ));
   }
 
-  public function postGoogleTranslate( Request $request){
+  public function postGoogleTranslate(){
     try{
       $translate = new TranslateClient([
-        'key' => $request->get('googleKey')
+        'key' => Request::get('googleKey')
       ]);
       // Translate text from english to french.
-      $result = $translate->translate($request->get('text'), [
-        'source' => $request->get('langFrom'),
-        'target' => $request->get('langTo')
+      $result = $translate->translate(Request::get('text'), [
+        'source' => Request::get('langFrom'),
+        'target' => Request::get('langTo')
       ]);
     } catch( GoogleException $ge ){
       dd( $ge );

@@ -7,6 +7,7 @@ var YANDEX_TRANSLATOR_KEY;
 var GOOGLE_TRANSLATOR_KEY;
 var URL_YANDEX_TRANSLATOR_KEY;
 var URL_GOOGLE_TRANSLATOR_KEY;
+var URL_GOOGLE_TRANSLATOR_ROUTE;
 var PRIMARY_LOCALE;
 var CURRENT_LOCALE;
 var TRANSLATING_LOCALE;
@@ -72,19 +73,7 @@ String.prototype.toLocaleProperCaseOrLowerCase = function () {
 };
 
 function translateGoogle(fromLoc, fromText, toLoc, onTranslate){
-    var jqxhr = $.getJSON(URL_GOOGLE_TRANSLATOR_KEY, {
-            langFrom: fromLoc,
-            langTo: toLoc,
-            text: fromText
-        },
-        function (json) {
-            if (json.code === ERR_OK) {
-                onTranslate(json.text.join("\n"));
-            }
-            else {
-                window.console.log("Google API: " + json.code + ': ' + errCodes[json.code] + "\n");
-            }
-        });
+
 }
 
 function translateYandex(fromLoc, fromText, toLoc, onTranslate) {
@@ -107,19 +96,37 @@ function translateYandex(fromLoc, fromText, toLoc, onTranslate) {
             501: 'The specified translation direction is not supported.'
         };
 
-    var jqxhr = $.getJSON("https://translate.yandex.net/api/v1.5/tr.json/translate", {
-            key: YANDEX_TRANSLATOR_KEY,
-            lang: fromLoc + '-' + toLoc,
-            text: fromText
-        },
-        function (json) {
-            if (json.code === ERR_OK) {
-                onTranslate(json.text.join("\n"));
-            }
-            else {
-                window.console.log("Yandex API: " + json.code + ': ' + errCodes[json.code] + "\n");
-            }
-        });
+    if( YANDEX_TRANSLATOR_KEY !== ''){
+        var jqxhr = $.getJSON("https://translate.yandex.net/api/v1.5/tr.json/translate", {
+                key: YANDEX_TRANSLATOR_KEY,
+                lang: fromLoc + '-' + toLoc,
+                text: fromText
+            },
+            function (json) {
+                if (json.code === ERR_OK) {
+                    onTranslate(json.text.join("\n"));
+                }
+                else {
+                    window.console.log("Yandex API: " + json.code + ': ' + errCodes[json.code] + "\n");
+                }
+            });
+    } else if ( GOOGLE_TRANSLATOR_KEY !== ''){
+        var jqxhr = $.getJSON(URL_GOOGLE_TRANSLATOR_ROUTE, {
+                googleKey: GOOGLE_TRANSLATOR_KEY,
+                langFrom: fromLoc,
+                langTo: toLoc,
+                text: fromText
+            },
+            function (json) {
+                if (json.code === ERR_OK) {
+                    onTranslate(json.text.join("\n"));
+                }
+                else {
+                    window.console.log("Google API: " + json.code + ': ' + errCodes[json.code] + "\n");
+                }
+            });
+    }
+
 
     jqxhr.done(function () {
     });
@@ -260,6 +267,20 @@ $(document).ready(function () {
             success: function (json) {
                 if (json.status === 'ok') {
                     YANDEX_TRANSLATOR_KEY = json.yandex_key;
+                }
+            },
+            encode: true
+        });
+    }
+
+    if (URL_GOOGLE_TRANSLATOR_KEY) {
+        $.ajax({
+            type: 'POST',
+            url: URL_GOOGLE_TRANSLATOR_KEY,
+            data: {},
+            success: function (json) {
+                if (json.status === 'ok') {
+                    GOOGLE_TRANSLATOR_KEY = json.google_key;
                 }
             },
             encode: true

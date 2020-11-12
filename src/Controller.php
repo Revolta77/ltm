@@ -884,7 +884,8 @@ class Controller extends BaseController
         Route::get('trans_filters', '\\Revolta77\\TranslationManager\\Controller@getTransFilters');
         Route::post('find', '\\Revolta77\\TranslationManager\\Controller@postFind');
         Route::post('yandex_key', '\\Revolta77\\TranslationManager\\Controller@postYandexKey');
-        Route::post('google_key', '\\Revolta77\\TranslationManager\\Controller@postGoogleTranslate');
+        Route::post('google_key', '\\Revolta77\\TranslationManager\\Controller@postGoogleKey');
+        Route::post('google_translate', '\\Revolta77\\TranslationManager\\Controller@postGoogleTranslate');
         Route::post('delete_suffixed_keys/{group}', '\\Revolta77\\TranslationManager\\Controller@postDeleteSuffixedKeys');
         Route::post('add/{group}', '\\Revolta77\\TranslationManager\\Controller@postAddSuffixedKeys');
         Route::post('show_source/{group}/{key}', '\\Revolta77\\TranslationManager\\Controller@postShowSource');
@@ -1767,10 +1768,17 @@ class Controller extends BaseController
         ));
     }
 
+  public function postgoogleKey( Request $request ) {
+    return Response::json(array(
+      'status' => 'ok',
+      'google_key' => $this->manager->config('google_translator_key', null),
+    ));
+  }
+
   public function postGoogleTranslate( Request $request){
     try{
       $translate = new TranslateClient([
-        'key' => !!$this->manager->config('google_translator_key')
+        'key' => $request->get('googleKey')
       ]);
       // Translate text from english to french.
       $result = $translate->translate($request->get('text'), [

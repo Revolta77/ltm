@@ -857,7 +857,8 @@
 @section('body-bottom')
     <script>
         var URL_YANDEX_TRANSLATOR_KEY = '<?= action($controller . '@postYandexKey') ?>';
-        var URL_GOOGLE_TRANSLATOR_KEY = '<?= action($controller . '@postGoogleTranslate') ?>';
+        var URL_GOOGLE_TRANSLATOR_KEY = '<?= action($controller . '@postGoogleKey') ?>';
+        var URL_GOOGLE_TRANSLATOR_ROUTE = '<?= action($controller . '@postGoogleTranslate') ?>';
         var PRIMARY_LOCALE = '{{$primaryLocale}}';
         var CURRENT_LOCALE = '{{$currentLocale}}';
         var TRANSLATING_LOCALE = '{{$translatingLocale}}';

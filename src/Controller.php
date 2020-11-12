@@ -885,7 +885,7 @@ class Controller extends BaseController
         Route::post('find', '\\Revolta77\\TranslationManager\\Controller@postFind');
         Route::post('yandex_key', '\\Revolta77\\TranslationManager\\Controller@postYandexKey');
         Route::post('google_key', '\\Revolta77\\TranslationManager\\Controller@postGoogleKey');
-        Route::post('google_translate', '\\Revolta77\\TranslationManager\\Controller@postGoogleTranslate');
+        Route::get('google_translate', '\\Revolta77\\TranslationManager\\Controller@postGoogleTranslate');
         Route::post('delete_suffixed_keys/{group}', '\\Revolta77\\TranslationManager\\Controller@postDeleteSuffixedKeys');
         Route::post('add/{group}', '\\Revolta77\\TranslationManager\\Controller@postAddSuffixedKeys');
         Route::post('show_source/{group}/{key}', '\\Revolta77\\TranslationManager\\Controller@postShowSource');

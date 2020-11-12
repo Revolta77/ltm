@@ -1778,7 +1778,12 @@ class Controller extends BaseController
   public function postGoogleTranslate(){
     try{
       $translate = new TranslateClient([
-        'key' => Request::get('googleKey')
+        'key' => Request::get('googleKey'),
+        'restOptions' => [
+          'headers' => [
+            'referer' => env('APP_URL')
+          ]
+        ]
       ]);
       // Translate text from english to french.
       $result = $translate->translate(Request::get('text'), [

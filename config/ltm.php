@@ -262,6 +262,16 @@ return array(
 
     'default_connection' => null,
 
+  /**
+   * used to provide the Google cloud translate key for use in automatic Google translations
+   *
+   * @type string     Google translation api key
+   *
+   * This key is free to obtain and use but is required to enable Google translations. Visit: https://console.cloud.google.com/apis/api/translate.googleapis.com/credentials
+   *
+   */
+  'google_translator_key' => '',
+
     /**
      * used to provide the Yandex key for use in automatic Yandex translations
      *

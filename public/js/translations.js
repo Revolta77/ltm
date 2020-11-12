@@ -4,7 +4,9 @@
  */
 var CLIP_TEXT;
 var YANDEX_TRANSLATOR_KEY;
+var GOOGLE_TRANSLATOR_KEY;
 var URL_YANDEX_TRANSLATOR_KEY;
+var URL_GOOGLE_TRANSLATOR_KEY;
 var PRIMARY_LOCALE;
 var CURRENT_LOCALE;
 var TRANSLATING_LOCALE;
@@ -68,6 +70,22 @@ String.prototype.toLocaleProperCaseOrLowerCase = function () {
     "use strict";
     return this.substr(0, 1) + this.substr(1).toLocaleLowerCase();
 };
+
+function translateGoogle(fromLoc, fromText, toLoc, onTranslate){
+    var jqxhr = $.getJSON(URL_GOOGLE_TRANSLATOR_KEY, {
+            langFrom: fromLoc,
+            langTo: toLoc,
+            text: fromText
+        },
+        function (json) {
+            if (json.code === ERR_OK) {
+                onTranslate(json.text.join("\n"));
+            }
+            else {
+                window.console.log("Google API: " + json.code + ': ' + errCodes[json.code] + "\n");
+            }
+        });
+}
 
 function translateYandex(fromLoc, fromText, toLoc, onTranslate) {
     var ERR_OK = 200,
@@ -136,7 +154,12 @@ function extractPluralForm(pluralForms, index) {
     return '';
 }
 
-xtranslateService = translateYandex;
+if( YANDEX_TRANSLATOR_KEY !== ''){
+    xtranslateService = translateYandex;
+} else if( GOOGLE_TRANSLATOR_KEY !== ''){
+    xtranslateService = translateGoogle;
+}
+
 xtranslateText = function (translator, srcLoc, srcText, dstLoc, processText) {
     var pos, single, plural, havePlural, src = srcText;
     var hadSingleCount = false;

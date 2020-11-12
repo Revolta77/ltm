@@ -22,7 +22,8 @@
         "laravelcollective/html": "^6.1",
         "illuminate/translation": ">=7.0",
         "doctrine/dbal": "^2.10",
-        "symfony/finder": "^5.0"
+        "symfony/finder": "^5.0",
+        "google/cloud-translate": "^1.9"
     },
     "require-dev": {
         "phpspec/phpspec": "~6.1",

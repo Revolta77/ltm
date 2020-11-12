@@ -663,7 +663,7 @@
                             </div>
                         </div>
                         <?php endif ?>
-                        @if($yandex_key)
+                        @if($yandex_key || $google_key)
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <?= ifEditTrans($package . '::messages.translation-ops') ?>
@@ -857,6 +857,7 @@
 @section('body-bottom')
     <script>
         var URL_YANDEX_TRANSLATOR_KEY = '<?= action($controller . '@postYandexKey') ?>';
+        var URL_GOOGLE_TRANSLATOR_KEY = '<?= action($controller . '@postGoogleTranslate') ?>';
         var PRIMARY_LOCALE = '{{$primaryLocale}}';
         var CURRENT_LOCALE = '{{$currentLocale}}';
         var TRANSLATING_LOCALE = '{{$translatingLocale}}';

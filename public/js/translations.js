@@ -154,9 +154,9 @@ function extractPluralForm(pluralForms, index) {
     return '';
 }
 
-if( YANDEX_TRANSLATOR_KEY !== ''){
+if( typeof YANDEX_TRANSLATOR_KEY !== 'undefined' && YANDEX_TRANSLATOR_KEY !== ''){
     xtranslateService = translateYandex;
-} else if( GOOGLE_TRANSLATOR_KEY !== ''){
+} else if( typeof GOOGLE_TRANSLATOR_KEY !== 'undefined' && GOOGLE_TRANSLATOR_KEY !== ''){
     xtranslateService = translateGoogle;
 }
 

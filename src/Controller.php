@@ -1195,6 +1195,7 @@ class Controller extends BaseController
             'userLocales' => $userLocales,
             'group' => $group,
             'yandexKey' => $this->manager->config('yandex_translator_key', null),
+            'googleKey' => $this->manager->config('google_translator_key', null),
             'translations' => $translations,
         ];
         $pretty = Request::has('pretty-json') ? JSON_PRETTY_PRINT : 0;
@@ -1241,6 +1242,7 @@ class Controller extends BaseController
         $data = array(
             'isAdminEnabled' => $adminEnabled,
             'yandexKey' => $this->manager->config('yandex_translator_key'),
+            'googleKey' => $this->manager->config('google_translator_key'),
             'connectionName' => $this->normalizedConnectionName(),
             'markdownKeySuffix' => $this->manager->config(Manager::MARKDOWN_KEY_SUFFIX),
             'transFilters' => $this->transFilters,

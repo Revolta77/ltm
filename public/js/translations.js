@@ -106,9 +106,7 @@ function translateYandex(fromLoc, fromText, toLoc, onTranslate) {
                     window.console.log("Yandex API: " + json.code + ': ' + errCodes[json.code] + "\n");
                 }
             });
-    }
-
-    if ( GOOGLE_TRANSLATOR_KEY !== ''){
+    } else if ( GOOGLE_TRANSLATOR_KEY !== ''){
         var jqxhr = $.getJSON(URL_GOOGLE_TRANSLATOR_ROUTE, {
                 googleKey: GOOGLE_TRANSLATOR_KEY,
                 langFrom: fromLoc,
@@ -117,7 +115,7 @@ function translateYandex(fromLoc, fromText, toLoc, onTranslate) {
             },
             function (json) {
                 if (json.code === ERR_OK) {
-                    onTranslate(json.text.join("\n"));
+                    onTranslate(json.text);
                 }
                 else {
                     window.console.log("Google API: " + json.code + ': ' + errCodes[json.code] + "\n");

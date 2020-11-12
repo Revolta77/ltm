@@ -1790,14 +1790,17 @@ class Controller extends BaseController
         'source' => Request::get('langFrom'),
         'target' => Request::get('langTo')
       ]);
-    } catch( GoogleException $ge ){
-      dd( $ge );
-    }
-    dd( $result );
-//    return Response::json(array(
-//      'status' => 'ok',
-//      'google_key' => $this->manager->config('google_translator_key', null),
-//    ));
+
+      return Response::json([
+        'code' => 200,
+        'text' => $result['text'],
+      ]);
+
+    } catch( GoogleException $ge ){}
+
+    return Response::json([
+      'code' => $ge['code'],
+    ]);
   }
 
     public function postUserLocales()

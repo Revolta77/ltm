@@ -35,6 +35,7 @@ class YandexTranslationDashboard extends DashboardComponent {
             isLoading: appSettings_$.isLoading()/* || appSettings_$.isLoading()*/,
             isStaleData: appSettings_$.isStaleData() || appSettings_$.isStaleData(),
             yandexKey: appSettings_$.yandexKey(),
+            googleKey: appSettings_$.googleKey(),
             primaryLocale: primaryLocale,
             translatingLocale: translatingLocale,
             yandexPrimaryText: yandexText[primaryLocale]() || '',
@@ -60,9 +61,9 @@ class YandexTranslationDashboard extends DashboardComponent {
 
     render() {
         const { t } = this.props;
-        const { error, isLoaded, yandexKey, yandexPrimaryText, yandexTranslatingText, primaryLocale, translatingLocale } = this.state;
+        const { error, isLoaded, yandexKey, googleKey, yandexPrimaryText, yandexTranslatingText, primaryLocale, translatingLocale } = this.state;
 
-        if (this.noShow() || !yandexKey) return null;
+        if (this.noShow() || !yandexKey || !googleKey) return null;
 
         let body;
         if (error) {

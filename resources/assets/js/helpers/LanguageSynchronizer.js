@@ -168,6 +168,7 @@ class LanguageSynchronizer {
     hookScripts() {
         const vars = jQuery.fn.OldScriptHooks;
         vars.YANDEX_TRANSLATOR_KEY = appSettings_$.yandexKey();
+        vars.GOOGLE_TRANSLATOR_KEY = appSettings_$.googleKey();
         vars.PRIMARY_LOCALE = appSettings_$.primaryLocale();
         vars.TRANSLATING_LOCALE = appSettings_$.translatingLocale();
 

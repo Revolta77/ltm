@@ -73,6 +73,7 @@ class App extends BoxedStateComponent {
             loggedIn: true,
             isAdminEnabled: appSettings_$.isAdminEnabled(),
             yandexKey: appSettings_$.yandexKey(),
+            googleKey: appSettings_$.googleKey(),
             groups: appSettings_$.groups(),
             group: appTranslations_$.group(),
             modalBody: appModal.getState().modalBody,
@@ -220,7 +221,7 @@ class App extends BoxedStateComponent {
 
     render() {
         const { t, i18n, match } = this.props;
-        const { groups, isAdminEnabled, yandexKey, group: currentGroup, showSummaryDashboard, showMismatchDashboard } = this.state;
+        const { groups, isAdminEnabled, yandexKey, googleKey, group: currentGroup, showSummaryDashboard, showMismatchDashboard } = this.state;
 
         let groupItems = [];
         const disabled = true;

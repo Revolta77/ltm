@@ -19,6 +19,7 @@ export class GlobalTranslations extends GlobalSetting {
             connectionName: "default",
             displayLocales: [],
             yandexKey: null,
+            googleKey: null,
             translations: {},
             missingKeys: {}, // missing keys
         }, {

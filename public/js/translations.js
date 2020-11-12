@@ -72,10 +72,6 @@ String.prototype.toLocaleProperCaseOrLowerCase = function () {
     return this.substr(0, 1) + this.substr(1).toLocaleLowerCase();
 };
 
-function translateGoogle(fromLoc, fromText, toLoc, onTranslate){
-
-}
-
 function translateYandex(fromLoc, fromText, toLoc, onTranslate) {
     var ERR_OK = 200,
         ERR_KEY_INVALID = 401,
@@ -110,7 +106,9 @@ function translateYandex(fromLoc, fromText, toLoc, onTranslate) {
                     window.console.log("Yandex API: " + json.code + ': ' + errCodes[json.code] + "\n");
                 }
             });
-    } else if ( GOOGLE_TRANSLATOR_KEY !== ''){
+    }
+
+    if ( GOOGLE_TRANSLATOR_KEY !== ''){
         var jqxhr = $.getJSON(URL_GOOGLE_TRANSLATOR_ROUTE, {
                 googleKey: GOOGLE_TRANSLATOR_KEY,
                 langFrom: fromLoc,
@@ -161,11 +159,7 @@ function extractPluralForm(pluralForms, index) {
     return '';
 }
 
-if( typeof YANDEX_TRANSLATOR_KEY !== 'undefined' && YANDEX_TRANSLATOR_KEY !== ''){
-    xtranslateService = translateYandex;
-} else if( typeof GOOGLE_TRANSLATOR_KEY !== 'undefined' && GOOGLE_TRANSLATOR_KEY !== ''){
-    xtranslateService = translateGoogle;
-}
+xtranslateService = translateYandex;
 
 xtranslateText = function (translator, srcLoc, srcText, dstLoc, processText) {
     var pos, single, plural, havePlural, src = srcText;

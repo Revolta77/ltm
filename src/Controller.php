@@ -1785,7 +1785,7 @@ class Controller extends BaseController
           ]
         ]
       ]);
-      // Translate text from english to french.
+
       $result = $translate->translate(Request::get('text'), [
         'source' => Request::get('langFrom'),
         'target' => Request::get('langTo')

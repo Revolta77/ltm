@@ -1837,7 +1837,7 @@ class Controller extends BaseController
     }
 
     return Response::json([
-      'code' => $e['code'],
+      'error' => $e,
     ]);
   }
 

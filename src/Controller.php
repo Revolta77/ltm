@@ -1830,7 +1830,7 @@ class Controller extends BaseController
 
       return Response::json([
         'code' => 200,
-        'text' => $result['text'],
+        'text' => $result[0]['text'],
       ]);
 
     } catch(DeepLException $e){

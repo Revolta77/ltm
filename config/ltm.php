@@ -281,6 +281,7 @@ return array(
    *
    */
   'deepl_translator_key' => '',
+  'deepl_translator_pro' => false,
 
     /**
      * used to provide the Yandex key for use in automatic Yandex translations

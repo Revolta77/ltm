@@ -126,7 +126,7 @@ function translateYandex(fromLoc, fromText, toLoc, onTranslate) {
             });
     } else if ( DEEPL_TRANSLATOR_KEY !== ''){
         var jqxhr = $.getJSON(URL_DEEPL_TRANSLATOR_ROUTE, {
-                googleKey: DEEPL_TRANSLATOR_KEY,
+                deeplKey: DEEPL_TRANSLATOR_KEY,
                 langFrom: fromLoc,
                 langTo: toLoc,
                 text: fromText
@@ -725,7 +725,8 @@ $(document).ready(function () {
                     elemRow.addClass('editing');
                 }
 
-                if (xElem.btnTranslate.length && dstElem.length && YANDEX_TRANSLATOR_KEY !== '') {
+                if (xElem.btnTranslate.length && dstElem.length &&
+                    ( YANDEX_TRANSLATOR_KEY !== '' || GOOGLE_TRANSLATOR_KEY !== '' || DEEPL_TRANSLATOR_KEY !== '') ) {
                     if (srcLoc !== '') {
                         srcElem = elemRow.find('#' + srcId.replace(/\./g, '-')).first();
                         if (srcElem.length === 0) {

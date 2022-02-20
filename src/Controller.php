@@ -1820,9 +1820,9 @@ class Controller extends BaseController
   public function postDeeplTranslate(){
     try{
       if( $this->manager->config('deepl_translator_pro') ){
-        $translate = new DeepL( Request::get('deeplKey'), 2, 'api.deepl.com');
+        $translate = new DeepL( Request::get('deeplKey'));
       } else {
-        $translate = new DeepL( Request::get('deeplKey') );
+        $translate = new DeepL( Request::get('deeplKey'), 2, 'api-free.deepl.com' );
       }
 
 

@@ -5,9 +5,12 @@
 var CLIP_TEXT;
 var YANDEX_TRANSLATOR_KEY;
 var GOOGLE_TRANSLATOR_KEY;
+var DEEPL_TRANSLATOR_KEY;
 var URL_YANDEX_TRANSLATOR_KEY;
 var URL_GOOGLE_TRANSLATOR_KEY;
+var URL_DEEPL_TRANSLATOR_KEY;
 var URL_GOOGLE_TRANSLATOR_ROUTE;
+var URL_DEEPL_TRANSLATOR_ROUTE;
 var PRIMARY_LOCALE;
 var CURRENT_LOCALE;
 var TRANSLATING_LOCALE;
@@ -119,6 +122,21 @@ function translateYandex(fromLoc, fromText, toLoc, onTranslate) {
                 }
                 else {
                     window.console.log("Google API: " + json.code + ': ' + errCodes[json.code] + "\n");
+                }
+            });
+    } else if ( DEEPL_TRANSLATOR_KEY !== ''){
+        var jqxhr = $.getJSON(URL_DEEPL_TRANSLATOR_ROUTE, {
+                googleKey: DEEPL_TRANSLATOR_KEY,
+                langFrom: fromLoc,
+                langTo: toLoc,
+                text: fromText
+            },
+            function (json) {
+                if (json.code === ERR_OK) {
+                    onTranslate(json.text);
+                }
+                else {
+                    window.console.log("DEEPL API: " + json.code + ': ' + errCodes[json.code] + "\n");
                 }
             });
     }
@@ -273,6 +291,20 @@ $(document).ready(function () {
             success: function (json) {
                 if (json.status === 'ok') {
                     GOOGLE_TRANSLATOR_KEY = json.google_key;
+                }
+            },
+            encode: true
+        });
+    }
+
+    if (URL_DEEPL_TRANSLATOR_KEY) {
+        $.ajax({
+            type: 'POST',
+            url: URL_DEEPL_TRANSLATOR_KEY,
+            data: {},
+            success: function (json) {
+                if (json.status === 'ok') {
+                    DEEPL_TRANSLATOR_KEY = json.deepl_key;
                 }
             },
             encode: true

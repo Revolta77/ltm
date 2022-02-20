@@ -1,5 +1,7 @@
 <?php namespace Revolta77\TranslationManager;
 
+use BabyMarkt\DeepL\DeepL;
+use BabyMarkt\DeepL\DeepLException;
 use Google\Cloud\Core\Exception\GoogleException;
 use Google\Cloud\Translate\V2\TranslateClient;
 use Illuminate\Routing\Controller as BaseController;
@@ -366,6 +368,7 @@ class Controller extends BaseController
             ->with('translations', $translations)
             ->with('yandex_key', !!$this->manager->config('yandex_translator_key'))
             ->with('google_key', !!$this->manager->config('google_translator_key'))
+            ->with('deepl_key', !!$this->manager->config('deepl_translator_key'))
             ->with('locales', $locales)
             ->with('primaryLocale', $primaryLocale)
             ->with('currentLocale', $currentLocale)
@@ -885,7 +888,9 @@ class Controller extends BaseController
         Route::post('find', '\\Revolta77\\TranslationManager\\Controller@postFind');
         Route::post('yandex_key', '\\Revolta77\\TranslationManager\\Controller@postYandexKey');
         Route::post('google_key', '\\Revolta77\\TranslationManager\\Controller@postGoogleKey');
+        Route::post('deepl_key', '\\Revolta77\\TranslationManager\\Controller@postDeeplKey');
         Route::get('google_translate', '\\Revolta77\\TranslationManager\\Controller@postGoogleTranslate');
+        Route::get('deepl_translate', '\\Revolta77\\TranslationManager\\Controller@postDeeplTranslate');
         Route::post('delete_suffixed_keys/{group}', '\\Revolta77\\TranslationManager\\Controller@postDeleteSuffixedKeys');
         Route::post('add/{group}', '\\Revolta77\\TranslationManager\\Controller@postAddSuffixedKeys');
         Route::post('show_source/{group}/{key}', '\\Revolta77\\TranslationManager\\Controller@postShowSource');
@@ -1197,6 +1202,7 @@ class Controller extends BaseController
             'group' => $group,
             'yandexKey' => $this->manager->config('yandex_translator_key', null),
             'googleKey' => $this->manager->config('google_translator_key', null),
+            'deeplKey' => $this->manager->config('deepl_translator_key', null),
             'translations' => $translations,
         ];
         $pretty = Request::has('pretty-json') ? JSON_PRETTY_PRINT : 0;
@@ -1244,6 +1250,7 @@ class Controller extends BaseController
             'isAdminEnabled' => $adminEnabled,
             'yandexKey' => $this->manager->config('yandex_translator_key'),
             'googleKey' => $this->manager->config('google_translator_key'),
+            'deeplKey' => $this->manager->config('deepl_translator_key'),
             'connectionName' => $this->normalizedConnectionName(),
             'markdownKeySuffix' => $this->manager->config(Manager::MARKDOWN_KEY_SUFFIX),
             'transFilters' => $this->transFilters,
@@ -1768,10 +1775,17 @@ class Controller extends BaseController
         ));
     }
 
-  public function postgoogleKey() {
+  public function postGoogleKey() {
     return Response::json(array(
       'status' => 'ok',
       'google_key' => $this->manager->config('google_translator_key', null),
+    ));
+  }
+
+  public function postDeeplKey() {
+    return Response::json(array(
+      'status' => 'ok',
+      'deepl_key' => $this->manager->config('deepl_translator_key', null),
     ));
   }
 
@@ -1800,6 +1814,25 @@ class Controller extends BaseController
 
     return Response::json([
       'code' => $ge['code'],
+    ]);
+  }
+
+  public function postDeeplTranslate(){
+    try{
+      $translate = new DeepL( Request::get('deeplKey'), 2, 'api.deepl.com');
+
+      $result = $translate->translate(Request::get('text'), Request::get('langFrom'), Request::get('langTo') );
+
+      return Response::json([
+        'code' => 200,
+        'text' => $result['text'],
+      ]);
+
+    } catch(DeepLException $e){
+    }
+
+    return Response::json([
+      'code' => $e['code'],
     ]);
   }
 

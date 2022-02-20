@@ -42,7 +42,7 @@
             data-disable-with="<?=noEditTrans($package . '::messages.auto-fill-disabled')?>"
                     href="#"><?= noEditTrans($package . '::messages.auto-fill') ?></a>
         </th>
-        <?php elseif ( (isset($yandex_key) && $yandex_key) || (isset($google_key) && $google_key) ): ?>
+        <?php elseif ( (isset($yandex_key) && $yandex_key) || (isset($google_key) && $google_key) || (isset($deepl_key) && $deepl_key) ): ?>
         <th width="<?=$mainWidth?>%"><?= $jsonAdjustedLocale; ?>&nbsp;
             <?php if ($locale !== 'json') : ?>
             <?= ifEditTrans($package . '::messages.auto-translate-disabled') ?>

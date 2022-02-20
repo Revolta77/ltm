@@ -65,6 +65,7 @@ class TranslationsTable extends DashboardComponent {
             displayLocales: appTranslations_$.displayLocales(),
             yandexKey: appTranslations_$.yandexKey(),
             googleKey: appTranslations_$.googleKey(),
+            deeplKey: appTranslations_$.deeplKey(),
             translations: appTranslations_$.translations(),
             importReplace: appSettings_$.uiSettings.importReplace() || '0',
         }, isAdminEnabled ? 'collapsePublishButtons' : null);
@@ -103,7 +104,7 @@ class TranslationsTable extends DashboardComponent {
 
     render() {
         const { t } = this.props;
-        const { error, isStaleData, isLoaded, isLoading, collapsePublishButtons, translationsGroup, showPublishButtons, importReplace, isAdminEnabled, groups, group, translations, translatingLocale, primaryLocale, userLocales, displayLocales, showUsage, yandexKey, googleKey } = this.state;
+        const { error, isStaleData, isLoaded, isLoading, collapsePublishButtons, translationsGroup, showPublishButtons, importReplace, isAdminEnabled, groups, group, translations, translatingLocale, primaryLocale, userLocales, displayLocales, showUsage, yandexKey, googleKey, deeplKey } = this.state;
 
         if (this.noShow()) return null;
 
@@ -206,7 +207,7 @@ class TranslationsTable extends DashboardComponent {
                                     href="#">{t('messages.auto-fill')}</a>
                             </th>,
                         );
-                    } else if ((yandexKey || googleKey) && $isLocaleEnabled && $locale !== 'json') {
+                    } else if ((yandexKey || googleKey || deeplKey) && $isLocaleEnabled && $locale !== 'json') {
                         headings.push(
                             <th key={headings.length} width={$mainWidth + "%"}>{$locale}&nbsp;
                                 <a key={1} className="btn btn-sm btn-light btn-outline-secondary auto-translate"
@@ -225,7 +226,7 @@ class TranslationsTable extends DashboardComponent {
                             <th key={headings.length} width={$mainWidth + "%"}>{$jsonAdjustedLocale}</th>,
                         );
                     }
-                } else if ((yandexKey || googleKey) && $isLocaleEnabled && $locale !== 'json') {
+                } else if ((yandexKey || googleKey || deeplKey) && $isLocaleEnabled && $locale !== 'json') {
                     headings.push(
                         <th key={headings.length}>{$locale}
                             <a key={1} className="btn btn-sm btn-light btn-outline-secondary auto-translate" role="button" data-trans={$col} data-locale={$locale}

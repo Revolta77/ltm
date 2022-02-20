@@ -20,6 +20,7 @@ export class GlobalTranslations extends GlobalSetting {
             displayLocales: [],
             yandexKey: null,
             googleKey: null,
+            deeplKey: null,
             translations: {},
             missingKeys: {}, // missing keys
         }, {

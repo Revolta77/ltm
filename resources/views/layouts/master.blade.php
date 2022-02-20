@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
-    <link href="<?= $public_prefix ?>ltm/css/translations.css" rel="stylesheet">
+    <link href="<?= public_path() . $public_prefix ?>ltm/css/translations.css" rel="stylesheet">
     @if(isInPlaceEditing(2))
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet'
                 type='text/css'>
@@ -42,9 +42,9 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>--}}
 <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-<script src="<?= $public_prefix ?>ltm/js/rails.min.js"></script>
-<script src="<?= $public_prefix ?>ltm/js/inflection.js"></script>
-<script src="<?= $public_prefix ?>ltm/js/translations.js"></script>
+<script src="<?= public_path() . $public_prefix ?>ltm/js/rails.min.js"></script>
+<script src="<?= public_path() . $public_prefix ?>ltm/js/inflection.js"></script>
+<script src="<?= public_path() . $public_prefix ?>ltm/js/translations.js"></script>
 @yield('body-bottom')
 </body>
 </html>

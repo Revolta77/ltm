@@ -196,6 +196,7 @@ export class AppSettings extends GlobalSetting {
             groups: [],
             yandexKey: '',
             googleKey: '',
+            deeplKey: '',
             showUnpublishedSite: false,
             uiSettings: {
                 yandexText: { "@@": '', }, // placeholder so Php does not convert empty object to empty array

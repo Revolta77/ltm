@@ -272,6 +272,16 @@ return array(
    */
   'google_translator_key' => '',
 
+  /**
+   * used to provide the Deepl translate key for use in automatic Deepl translations
+   *
+   * @type string     Deepl translation api key
+   *
+   * This key is free to obtain and use but is required to enable Deepl translations. Visit: https://www.deepl.com/pro
+   *
+   */
+  'deepl_translator_key' => '',
+
     /**
      * used to provide the Yandex key for use in automatic Yandex translations
      *

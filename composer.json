@@ -22,7 +22,7 @@
         "laravelcollective/html": "^6.1",
         "illuminate/translation": ">=7.0",
         "doctrine/dbal": "^2.10",
-        "symfony/finder": "^5.0",
+        "symfony/finder": "^6.2",
         "google/cloud-translate": "^1.9",
         "babymarkt/deepl-php-lib": "^4.0"
     },
